@@ -32,6 +32,19 @@ ActiveRecord::Schema.define(version: 20150513152341) do
 
   add_index "changes_history_records", ["user_id", "what_type", "when"], name: "index_changes_history_records_on_user_id_and_what_type_and_when", using: :btree
 
+  create_table "changes_history_records_copy", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "when"
+    t.text     "how"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "what_id"
+    t.string   "what_type",        limit: 255
+    t.boolean  "reviewed"
+    t.string   "who_email",        limit: 255
+    t.string   "who_organization", limit: 255
+  end
+
   create_table "clusters", force: :cascade do |t|
     t.string "name", limit: 255
   end
@@ -77,11 +90,16 @@ ActiveRecord::Schema.define(version: 20150513152341) do
     t.date     "start_date"
   end
 
+  add_index "data_denormalization", ["cluster_ids"], name: "data_denormalization_cluster_idsx", using: :gist
+  add_index "data_denormalization", ["countries_ids"], name: "data_denormalization_countries_idsx", using: :gist
+  add_index "data_denormalization", ["donors_ids"], name: "data_denormalization_donors_idsx", using: :gist
   add_index "data_denormalization", ["is_active"], name: "data_denormalization_is_activex", using: :btree
   add_index "data_denormalization", ["organization_id"], name: "data_denormalization_organization_idx", using: :btree
   add_index "data_denormalization", ["organization_name"], name: "data_denormalization_organization_namex", using: :btree
   add_index "data_denormalization", ["project_id"], name: "data_denormalization_project_idx", using: :btree
   add_index "data_denormalization", ["project_name"], name: "data_denormalization_project_name_idx", using: :btree
+  add_index "data_denormalization", ["regions_ids"], name: "data_denormalization_regions_idsx", using: :gist
+  add_index "data_denormalization", ["sector_ids"], name: "data_denormalization_sector_idsx", using: :gist
   add_index "data_denormalization", ["site_id"], name: "data_denormalization_site_idx", using: :btree
 
   create_table "data_export", id: false, force: :cascade do |t|
