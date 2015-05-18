@@ -10,7 +10,6 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 set :git_shallow_clone, 1
 set :scm_user, 'ubuntu'
 set :repository, "git@github.com:Vizzuality/iom_geolocator.git"
-ssh_options[:forward_agent] = true
 set :keep_releases, 5
 
 # set :linode_staging_old, '178.79.131.104'
