@@ -1,4 +1,4 @@
-require 'config/boot'
+# require 'config/boot'
 require "bundler/capistrano"
 
 set :use_sudo, false
