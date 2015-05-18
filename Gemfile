@@ -24,6 +24,8 @@ group :development do
   gem 'capistrano', '~> 3.4.0', github: 'capistrano/capistrano'
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
+  gem 'capistrano-passenger'
+  gem 'capistrano-ext'
   gem 'capistrano-bundler'
 end
 group :development, :test do
