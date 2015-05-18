@@ -9,7 +9,7 @@ set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public
 # set :git_enable_submodules, 1
 set :git_shallow_clone, 1
 set :scm_user, 'ubuntu'
-set :repository, "git@github.com:Vizzuality/iom_geolocator.git"
+set :repo_url, "git@github.com:Vizzuality/iom_geolocator.git"
 set :keep_releases, 5
 
 set :user,  'ubuntu'
