@@ -25,7 +25,6 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
   gem 'capistrano-passenger'
-  gem 'capistrano-ext'
   gem 'capistrano-bundler'
 end
 group :development, :test do

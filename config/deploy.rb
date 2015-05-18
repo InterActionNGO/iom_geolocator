@@ -1,4 +1,3 @@
-require 'capistrano/ext/multistage'
 require 'config/boot'
 require "bundler/capistrano"
 
