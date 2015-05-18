@@ -27,10 +27,8 @@ class Geolocation < ActiveRecord::Base
   before_save :set_adm_level
 
   def set_adm_level
-    if self.fcode.present? && self.fcode[0..2] == 'ADM' && self.fcode[3..4].to_i.to_s == self.fcode[3..4]
+    if self.fcode.present? && !self.adm_level.present? && self.fcode[0..2] == 'ADM' && self.fcode[3..4].to_i.to_s == self.fcode[3..4]
       self.adm_level = self.fcode[3..4].to_i
-    else
-      self.adm_level = 0
     end
   end
 
