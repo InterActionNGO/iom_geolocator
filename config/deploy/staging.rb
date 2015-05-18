@@ -1,4 +1,3 @@
-require "rvm/capistrano"
 set :default_stage, "staging"
 set :rvm_type, :system
 

@@ -1,4 +1,3 @@
-require "rvm/capistrano"
 set :default_stage, "production"
 
 role :app, linode_production
