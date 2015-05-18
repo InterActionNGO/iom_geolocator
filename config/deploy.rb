@@ -1,4 +1,4 @@
-∫set :use_sudo, false
+set :use_sudo, false
 set :stages, %w(staging production smbtc)
 
 default_run_options[:pty] = true
