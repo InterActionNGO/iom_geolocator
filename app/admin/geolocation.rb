@@ -8,6 +8,7 @@ ActiveAdmin.register Geolocation do
   filter :adm_level
   filter :g0
   filter :g1
+  filter :admin1
   filter :g2
   filter :g3
   filter :g4
@@ -20,13 +21,13 @@ ActiveAdmin.register Geolocation do
     column :country_name
     column :country_code
     column :g0
-    # column :admin1
+     column :admin1
     column :g1
-    # column :admin2
+     column :admin2
     column :g2
-    # column :admin3
+     column :admin3
     column :g3
-    # column :admin4
+     column :admin4
     column :g4
     column :adm_level
     actions
