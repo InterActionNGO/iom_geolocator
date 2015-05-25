@@ -8,10 +8,13 @@ ActiveAdmin.register Geolocation do
   filter :adm_level
   filter :g0
   filter :g1
-  filter :admin1
   filter :g2
   filter :g3
   filter :g4
+  filter :admin1
+  filter :admin2
+  filter :admin3
+  filter :admin4
   index do
     column :id
     column :geonameid

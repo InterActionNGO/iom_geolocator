@@ -32,19 +32,6 @@ ActiveRecord::Schema.define(version: 20150520113946) do
 
   add_index "changes_history_records", ["user_id", "what_type", "when"], name: "index_changes_history_records_on_user_id_and_what_type_and_when", using: :btree
 
-  create_table "changes_history_records_copy", force: :cascade do |t|
-    t.integer  "user_id"
-    t.datetime "when"
-    t.text     "how"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "what_id"
-    t.string   "what_type",        limit: 255
-    t.boolean  "reviewed"
-    t.string   "who_email",        limit: 255
-    t.string   "who_organization", limit: 255
-  end
-
   create_table "clusters", force: :cascade do |t|
     t.string "name", limit: 255
   end
@@ -90,16 +77,11 @@ ActiveRecord::Schema.define(version: 20150520113946) do
     t.date     "start_date"
   end
 
-  add_index "data_denormalization", ["cluster_ids"], name: "data_denormalization_cluster_idsx", using: :gist
-  add_index "data_denormalization", ["countries_ids"], name: "data_denormalization_countries_idsx", using: :gist
-  add_index "data_denormalization", ["donors_ids"], name: "data_denormalization_donors_idsx", using: :gist
   add_index "data_denormalization", ["is_active"], name: "data_denormalization_is_activex", using: :btree
   add_index "data_denormalization", ["organization_id"], name: "data_denormalization_organization_idx", using: :btree
   add_index "data_denormalization", ["organization_name"], name: "data_denormalization_organization_namex", using: :btree
   add_index "data_denormalization", ["project_id"], name: "data_denormalization_project_idx", using: :btree
   add_index "data_denormalization", ["project_name"], name: "data_denormalization_project_name_idx", using: :btree
-  add_index "data_denormalization", ["regions_ids"], name: "data_denormalization_regions_idsx", using: :gist
-  add_index "data_denormalization", ["sector_ids"], name: "data_denormalization_sector_idsx", using: :gist
   add_index "data_denormalization", ["site_id"], name: "data_denormalization_site_idx", using: :btree
 
   create_table "data_export", id: false, force: :cascade do |t|
@@ -203,14 +185,6 @@ ActiveRecord::Schema.define(version: 20150520113946) do
   add_index "geolocations", ["admin3"], name: "index_geolocations_on_admin3", using: :btree
   add_index "geolocations", ["admin4"], name: "index_geolocations_on_admin4", using: :btree
   add_index "geolocations", ["geonameid"], name: "index_geolocations_on_geonameid", using: :btree
-
-  create_table "geolocations_projects", id: false, force: :cascade do |t|
-    t.integer "geolocation_id"
-    t.integer "project_id"
-  end
-
-  add_index "geolocations_projects", ["geolocation_id", "project_id"], name: "index_geolocations_projects_on_geolocation_id_and_project_id", using: :btree
-  add_index "geolocations_projects", ["project_id"], name: "index_geolocations_projects_on_project_id", using: :btree
 
   create_table "layer_styles", force: :cascade do |t|
     t.string "title", limit: 255
