@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150520113946) do
+ActiveRecord::Schema.define(version: 20150528101753) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -185,6 +185,13 @@ ActiveRecord::Schema.define(version: 20150520113946) do
   add_index "geolocations", ["admin3"], name: "index_geolocations_on_admin3", using: :btree
   add_index "geolocations", ["admin4"], name: "index_geolocations_on_admin4", using: :btree
   add_index "geolocations", ["geonameid"], name: "index_geolocations_on_geonameid", using: :btree
+
+  create_table "geolocations_projects", id: false, force: :cascade do |t|
+    t.integer "geolocation_id"
+    t.integer "project_id"
+  end
+
+  add_index "geolocations_projects", ["geolocation_id", "project_id"], name: "index_geolocations_projects_on_geolocation_id_and_project_id", using: :btree
 
   create_table "layer_styles", force: :cascade do |t|
     t.string "title", limit: 255
