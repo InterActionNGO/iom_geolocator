@@ -76,7 +76,7 @@ def update_adms
   #   )
   # }
   # ActiveRecord::Base.connection.execute(update_levels)
-  Geolocation.where.not(country_code: ['BA','BI','CA','CD','ET','GR','ID','IN','JP','KR','LY','MA','MY','NI','PA','PH','RU','RW','SD','TN','TR','UA','UG','AL']).each do |g|
+  Geolocation.where(country_code: ['BA','BI','CA','CD','ET','GR','ID','IN','JP','KR','LY','MA','MY','NI','PA','PH','RU','RW','SD','TN','TR','UA','UG','AL']).each do |g|
     puts g.geonameid
     puts g.id
     g.g0 = case g.adm_level

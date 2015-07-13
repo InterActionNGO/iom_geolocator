@@ -1,4 +1,5 @@
 ActiveAdmin.register Geolocation do
+  permit_params :geonameid, :name, :latitude, :longitude, :fclass, :fcode, :country_code, :country_name, :country_geonameid, :cc2, :admin1, :admin2, :admin3, :admin4, :provider, :adm_level
   filter :geonameid
   filter :name
   filter :fcode, label: "Fcode", as: :select
