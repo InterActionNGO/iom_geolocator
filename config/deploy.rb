@@ -22,6 +22,7 @@ Rake::Task["deploy:assets:precompile"].clear_actions
 class PrecompileRequired < StandardError; end
 
 namespace :deploy do
+  after "finishing", "deploy:restart"
   namespace :assets do
     desc "Precompile assets"
     task :precompile do
@@ -56,13 +57,14 @@ namespace :deploy do
         end
       end
     end
-  end
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      # Your restart mechanism here, for example:
-       execute :touch, release_path.join('tmp/restart.txt')
+    task :restart do
+      on roles(:app), in: :sequence, wait: 5 do
+        # Your restart mechanism here, for example:
+         execute :touch, release_path.join('tmp/restart.txt')
+      end
     end
   end
+
   #desc 'Installing libraries'
   #after :publishing, :libraries do
   #  on roles(:app), in: :sequence, wait: 5 do
