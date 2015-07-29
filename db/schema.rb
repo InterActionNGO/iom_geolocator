@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150528101753) do
+ActiveRecord::Schema.define(version: 20150729145637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -155,7 +155,7 @@ ActiveRecord::Schema.define(version: 20150528101753) do
   add_index "donors", ["name"], name: "index_donors_on_name", using: :btree
 
   create_table "geolocations", force: :cascade do |t|
-    t.integer  "geonameid"
+    t.string   "uid"
     t.string   "name"
     t.float    "latitude"
     t.float    "longitude"
@@ -163,7 +163,7 @@ ActiveRecord::Schema.define(version: 20150528101753) do
     t.string   "fcode"
     t.string   "country_code"
     t.string   "country_name"
-    t.integer  "country_geonameid"
+    t.string   "country_uid"
     t.string   "cc2"
     t.string   "admin1"
     t.string   "admin2"
@@ -178,13 +178,14 @@ ActiveRecord::Schema.define(version: 20150528101753) do
     t.string   "g2"
     t.string   "g3"
     t.string   "g4"
+    t.string   "custom_geo_source"
   end
 
   add_index "geolocations", ["admin1"], name: "index_geolocations_on_admin1", using: :btree
   add_index "geolocations", ["admin2"], name: "index_geolocations_on_admin2", using: :btree
   add_index "geolocations", ["admin3"], name: "index_geolocations_on_admin3", using: :btree
   add_index "geolocations", ["admin4"], name: "index_geolocations_on_admin4", using: :btree
-  add_index "geolocations", ["geonameid"], name: "index_geolocations_on_geonameid", using: :btree
+  add_index "geolocations", ["uid"], name: "index_geolocations_on_uid", using: :btree
 
   create_table "geolocations_projects", id: false, force: :cascade do |t|
     t.integer "geolocation_id"
