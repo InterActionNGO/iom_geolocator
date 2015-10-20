@@ -36,6 +36,6 @@ production:
   template: template_postgis
   encoding: unicode
   host: <%= ENV["DB_HOST"] %>
-  database: iom_production
+  database: iom_production_v2
   username: postgres
   password: <%= ENV["DB_PSW"] %>
