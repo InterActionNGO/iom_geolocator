@@ -81,20 +81,20 @@ namespace :deploy do
   #  end
   #end
 
-  desc 'reload the database with seed data'
-  after :publishing, :seed do
-    on roles(:app), in: :sequence, wait: 5 do
-      within release_path do
-        if fetch(:rails_env) == "production"
-          execute :rake, 'db:migrate RAILS_ENV=production'
-          execute :rake, 'db:geo RAILS_ENV=production'
-        else
-          execute :rake, 'db:migrate RAILS_ENV=staging'
-          execute :rake, 'db:geo RAILS_ENV=staging'
-        end
-      end
-    end
-  end
+  # desc 'reload the database with seed data'
+  # after :publishing, :seed do
+  #   on roles(:app), in: :sequence, wait: 5 do
+  #     within release_path do
+  #       if fetch(:rails_env) == "production"
+  #         execute :rake, 'db:migrate RAILS_ENV=production'
+  #         execute :rake, 'db:geo RAILS_ENV=production'
+  #       else
+  #         execute :rake, 'db:migrate RAILS_ENV=staging'
+  #         execute :rake, 'db:geo RAILS_ENV=staging'
+  #       end
+  #     end
+  #   end
+  # end
 
   # desc 'Restart application'
   # after :seed, :restart do
