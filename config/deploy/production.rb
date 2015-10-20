@@ -1,3 +1,4 @@
+require 'capistrano/rvm'
 set :default_stage, "production"
 
 role :app, 'ubuntu@23.92.20.76'
