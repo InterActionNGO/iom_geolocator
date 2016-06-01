@@ -4,8 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def authenticate_admin
-    authenticate_or_request_with_http_basic("Whatever") do |name, password|
-      name == ENV["USER"] && password == ENV["PASSWORD"]
+    authenticate_or_request_with_http_basic("NGO AID MAP") do |name, password|
+      name == ENV["AUTH_USER"] && password == ENV["AUTH_PASSWORD"]
     end
   end
 end
