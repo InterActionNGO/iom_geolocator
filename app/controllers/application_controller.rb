@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_admin
     authenticate_or_request_with_http_basic("Whatever") do |name, password|
-      name == "ngo" && password == "ngo.pass.g30"
+      name == ENV["USER"] && password == ENV["PASSWORD"]
     end
   end
 end

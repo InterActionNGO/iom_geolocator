@@ -17,6 +17,8 @@ set :user,  'ubuntu'
 set :deploy_to, "/home/ubuntu/www/ngo-geo"
 set :assets_dependencies, %w(app/assets lib/assets vendor/assets Gemfile.lock config/routes.rb)
 
+set :linked_files, %w{.env}
+
 # clear the previous precompile task
 Rake::Task["deploy:assets:precompile"].clear_actions
 class PrecompileRequired < StandardError; end
